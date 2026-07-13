@@ -1,0 +1,28 @@
+{
+  "rule_name": "visible_low_ctr_page",
+  "lane": "Refresh / Content Opportunity Scoring",
+  "rows_scored": 30000,
+  "rule_matches": 9745,
+  "score_inputs": [
+    "impressions_90d",
+    "avg_position",
+    "ctr"
+  ],
+  "reason_code": "visible_low_ctr_page",
+  "action_label_for_matches": "review_title_meta",
+  "csv_written": "work/outputs/baseline_action_score.csv",
+  "base_down_rate_proxy": 0.5421,
+  "proxy_precision_at_10": 0.5,
+  "proxy_precision_at_20": 0.65,
+  "proxy_precision_at_50": 0.68,
+  "leakage_excluded_from_score": [
+    "trend_direction",
+    "trend_pct",
+    "impressions_last_30d",
+    "clicks_last_30d",
+    "sessions_last_30d",
+    "impressions_prev_30d",
+    "clicks_prev_30d",
+    "sessions_prev_30d"
+  ]
+}
