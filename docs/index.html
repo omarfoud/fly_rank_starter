@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Which Content Pages Should Be Reviewed First?</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5f6b7a;
+      --line: #d8dee8;
+      --paper: #ffffff;
+      --wash: #f6f8fb;
+      --accent: #0f766e;
+      --accent-2: #9a3412;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--wash);
+      line-height: 1.58;
+    }
+    header {
+      background: #102a43;
+      color: white;
+      padding: 56px 20px 42px;
+      border-bottom: 5px solid var(--accent);
+    }
+    main, .inner { max-width: 1040px; margin: 0 auto; }
+    h1 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.05; margin: 0 0 16px; letter-spacing: 0; }
+    h2 { margin-top: 44px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 1.55rem; }
+    h3 { margin-top: 28px; font-size: 1.05rem; }
+    a { color: var(--accent); }
+    .deck { max-width: 760px; color: #dbeafe; font-size: 1.05rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .pill { border: 1px solid rgba(255,255,255,.38); padding: 6px 10px; border-radius: 4px; font-size: .9rem; color: #eef6ff; }
+    main { background: var(--paper); padding: 30px 20px 70px; }
+    .callout { border-left: 4px solid var(--accent); background: #eefaf7; padding: 14px 16px; margin: 20px 0; }
+    .warning { border-left-color: var(--accent-2); background: #fff7ed; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+    .metric { border: 1px solid var(--line); border-radius: 6px; padding: 14px; background: #fbfcfe; }
+    .metric strong { display: block; font-size: 1.4rem; }
+    .metric span { color: var(--muted); font-size: .92rem; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: .94rem; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 8px; text-align: left; vertical-align: top; }
+    th { background: #f3f6fa; font-weight: 700; }
+    code { background: #eef2f7; padding: 2px 4px; border-radius: 3px; font-size: .9em; }
+    figure { margin: 24px 0; }
+    figure img { width: 100%; max-width: 760px; border: 1px solid var(--line); border-radius: 6px; background: white; display: block; }
+    figcaption { color: var(--muted); font-size: .92rem; margin-top: 8px; max-width: 760px; }
+    .wide { overflow-x: auto; }
+    footer { padding: 32px 20px; color: var(--muted); }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      table { font-size: .86rem; }
+      header { padding-top: 36px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Which Content Pages Should Be Reviewed First?</h1>
+    <p class="deck">A client-holdout refresh opportunity model built on FlyRank warehouse search data.</p>
+    <div class="meta">
+      <span class="pill">Lane: Refresh / Content Opportunity Scoring</span>
+      <span class="pill">Release: FlyRank internship warehouse v20260703</span>
+      <span class="pill">Validation: held-out clients</span>
+    </div>
+  </div>
+</header>
+<main>
+  <section>
+    <h2>Title + Abstract</h2>
+    <p>This project asks which content pages should be reviewed first when a team has limited time and wants to catch future search visibility decline. I used the FlyRank internship warehouse release, building features from August and September 2025 and labeling future decline in October 2025. The method compares a transparent visible-low-CTR baseline against logistic regression and random forest models under a client-holdout split. On held-out clients, the selected random forest reached Precision@50 of 0.900, compared with 0.180 for the baseline. The result is a decision-support queue for human review, not proof that any edit will cause recovery.</p>
+  </section>
+
+  <section>
+    <h2>Introduction / Problem Statement</h2>
+    <p>Content teams cannot review every page every week. The practical decision is: which page should be inspected first for refresh, monitoring, pruning, or title/meta review?</p>
+    <p>The unit of analysis is one pseudonymized content item. The output is a ranked queue with action labels and reason codes. A wrong recommendation can waste editorial time, while a missed recommendation can leave a meaningful decline unreviewed.</p>
+  </section>
+
+  <section>
+    <h2>Data</h2>
+    <p>The analysis uses the public-safe <code>FlyRank/internship-warehouse</code> release. It reads monthly partitions from <code>fact_content_daily_performance</code> plus safe metadata from <code>dim_content</code> and client coverage context from <code>dim_clients</code>.</p>
+    <div class="grid">
+      <div class="metric"><strong>24,547</strong><span>eligible page rows</span></div>
+      <div class="metric"><strong>18</strong><span>pseudonymized clients</span></div>
+      <div class="metric"><strong>25.6%</strong><span>future-decline base rate</span></div>
+    </div>
+    <table>
+      <tr><th>Item</th><th>Value</th></tr>
+      <tr><td>Release</td><td>FlyRank/internship-warehouse v20260703</td></tr>
+      <tr><td>Feature window</td><td>2025-08-01 through 2025-09-30; final feature month 2025-09</td></tr>
+      <tr><td>Target window</td><td>2025-10-01 through 2025-10-31</td></tr>
+      <tr><td>Label</td><td>future_decline_label = October 2025 impressions &lt; 80% of September 2025 impressions</td></tr>
+    </table>
+    <p>Excluded from features: October metrics, raw/private URLs, domains, queries, credentials, and any product decision flags. Pseudonymized IDs are used only for joining, grouping, and client-holdout splitting.</p>
+  </section>
+
+  <section>
+    <h2>Methodology</h2>
+    <p>The baseline is a single transparent rule from the Week 4 notebook: prioritize visible pages in positions 1-20 with CTR below 0.50%. The model feature set includes September traffic, CTR, average position, engagement context, AI-session count, August-to-September movement, content metadata, and content age.</p>
+    <p>Validation uses a grouped split by client: 14 clients for training and 4 held out for testing. This avoids mixing pages from the same client across train and test.</p>
+    <div class="callout"><strong>Leakage check:</strong> October metrics define the target/output only and are not used as model features. IDs are not predictive features. The result is evaluated on held-out clients.</div>
+  </section>
+
+  <section>
+    <h2>Results</h2>
+    <p>The random forest and logistic regression both strongly outperformed the visible-low-CTR rule on the held-out client split. The selected random forest tied at Precision@50 and had the strongest ROC AUC, average precision, and Precision@100.</p>
+    <div class="wide"><table>
+      <tr><th>Method</th><th>ROC AUC</th><th>Average precision</th><th>Precision@50</th><th>Precision@100</th></tr>
+      <tr><td>logistic_regression</td><td>0.853</td><td>0.729</td><td>0.900</td><td>0.770</td></tr>
+<tr><td>random_forest</td><td>0.871</td><td>0.740</td><td>0.900</td><td>0.780</td></tr>
+<tr><td>baseline_visible_low_ctr</td><td>0.471</td><td>0.258</td><td>0.180</td><td>0.280</td></tr>
+    </table></div>
+    <figure>
+      <img src="assets/capstone_model_vs_baseline.png" alt="Bar chart comparing baseline and model precision at 50 and 100">
+      <figcaption>The model ranks future-decline candidates better than the baseline on held-out clients.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/capstone_feature_importance.png" alt="Feature importance chart for the random forest model">
+      <figcaption>Position and CTR context are among the strongest model signals in this run.</figcaption>
+    </figure>
+    <h3>Top model signals</h3>
+    <ul><li><strong>avg_position_may</strong>: 0.252</li>
+<li><strong>avg_position_apr</strong>: 0.203</li>
+<li><strong>ctr_may</strong>: 0.082</li>
+<li><strong>imp_change_apr_to_may</strong>: 0.064</li>
+<li><strong>content_age_days</strong>: 0.060</li>
+<li><strong>clicks_may</strong>: 0.059</li>
+<li><strong>impressions_apr</strong>: 0.048</li>
+<li><strong>days_since_update</strong>: 0.040</li></ul>
+  </section>
+
+  <section>
+    <h2>Limitations & Honest Framing</h2>
+    <div class="callout warning"><strong>What this does not prove:</strong> It does not prove a refresh will recover traffic, explain Google's ranking algorithm, or justify automatic edits.</div>
+    <p>This is an observational decision-support model on one warehouse time slice. Some top-ranked pages are deep-position, zero-click pages; those may be better candidates for monitoring, pruning, consolidation, or investigation than for immediate refresh work.</p>
+  </section>
+
+  <section>
+    <h2>Ranked Recommendations</h2>
+    <p>The queue combines model probability with the transparent baseline score and emits reason codes. A human reviewer should inspect the context before acting.</p>
+    <div class="wide"><table>
+      <tr><th>Rank</th><th>Content id</th><th>Score</th><th>Action</th><th>Reason codes</th><th>Sept impressions</th><th>CTR</th><th>Avg position</th></tr>
+      <tr><td>1</td><td><code>content_e5119f5ccb21b8be</code></td><td>69.31</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>256</td><td>0.00%</td><td>80.7</td></tr>
+<tr><td>2</td><td><code>content_84332ce4be404e3f</code></td><td>69.27</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>306</td><td>0.00%</td><td>76.7</td></tr>
+<tr><td>3</td><td><code>content_e02ca086a84cfd35</code></td><td>69.14</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>228</td><td>0.00%</td><td>81.0</td></tr>
+<tr><td>4</td><td><code>content_ad0b68d1727295e3</code></td><td>69.11</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>304</td><td>0.00%</td><td>82.6</td></tr>
+<tr><td>5</td><td><code>content_905103df18204769</code></td><td>69.10</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>263</td><td>0.00%</td><td>75.0</td></tr>
+<tr><td>6</td><td><code>content_dcdb257bd5040270</code></td><td>69.09</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>241</td><td>0.00%</td><td>84.5</td></tr>
+<tr><td>7</td><td><code>content_305afb885f6a3b9c</code></td><td>69.08</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>537</td><td>0.00%</td><td>78.4</td></tr>
+<tr><td>8</td><td><code>content_df405a5ed66aab92</code></td><td>69.07</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>308</td><td>0.00%</td><td>75.6</td></tr>
+<tr><td>9</td><td><code>content_7faa8052b9d6529d</code></td><td>69.06</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>375</td><td>0.00%</td><td>84.6</td></tr>
+<tr><td>10</td><td><code>content_80be8e495d9ac06a</code></td><td>69.04</td><td>monitor_or_prune</td><td>future_decline_risk;deep_zero_click_risk</td><td>418</td><td>0.00%</td><td>79.4</td></tr>
+    </table></div>
+    <figure>
+      <img src="assets/capstone_action_mix.png" alt="Action mix chart for top 100 recommendations">
+      <figcaption>The top recommendation mix is intentionally cautious: deep decline risks often become monitor/prune candidates.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Reproducibility</h2>
+    <p>Code and notebooks live in the public repository: <a href="https://github.com/omarfoud/fly_rank_starter">https://github.com/omarfoud/fly_rank_starter</a>.</p>
+    <ul>
+      <li><a href="https://github.com/omarfoud/fly_rank_starter/blob/main/work/scripts/run_capstone_analysis.py">Capstone analysis script</a></li>
+      <li><a href="https://github.com/omarfoud/fly_rank_starter/blob/main/work/notebooks/capstone.ipynb">Capstone notebook</a></li>
+      <li><a href="https://github.com/omarfoud/fly_rank_starter/blob/main/work/notebooks/w05_model.ipynb">Model notebook</a></li>
+      <li><a href="https://github.com/omarfoud/fly_rank_starter/blob/main/work/notebooks/w06_validation_audit.ipynb">Validation audit notebook</a></li>
+      <li><a href="https://github.com/omarfoud/fly_rank_starter/blob/main/work/notebooks/w07_action_playbook.ipynb">Action playbook notebook</a></li>
+    </ul>
+    <p>To rerun from a fresh clone, install the repo requirements, log in to Hugging Face with a read token that has accepted the dataset gate, then run <code>python work/scripts/run_capstone_analysis.py</code>.</p>
+  </section>
+
+  <section>
+    <h2>Acknowledgments & Data Credit</h2>
+    <p>Built on the FlyRank ML Internship dataset. Data source credit: <a href="https://flyrank.ai/">FlyRank</a>.</p>
+  </section>
+</main>
+<footer>
+  <div class="inner">Public-safe research page. No client names, domains, URLs, raw private queries, or credentials are included.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,495 @@
+{
+  "release": "FlyRank/internship-warehouse v20260703",
+  "feature_window": "2025-08-01 through 2025-09-30; final feature month 2025-09",
+  "target_window": "2025-10-01 through 2025-10-31",
+  "label": "future_decline_label = October 2025 impressions < 80% of September 2025 impressions",
+  "selected_model": "random_forest",
+  "eligible_rows": 24547,
+  "eligible_clients": 18,
+  "base_rate": 0.2555,
+  "train_rows": 23880,
+  "test_rows": 667,
+  "train_clients": 14,
+  "test_clients": 4,
+  "results": [
+    {
+      "method": "logistic_regression",
+      "roc_auc": 0.853185628742515,
+      "avg_precision": 0.7294988104728205,
+      "precision_at_50": 0.9,
+      "precision_at_100": 0.77
+    },
+    {
+      "method": "random_forest",
+      "roc_auc": 0.8711976047904191,
+      "avg_precision": 0.7395855457445001,
+      "precision_at_50": 0.9,
+      "precision_at_100": 0.78
+    },
+    {
+      "method": "baseline_visible_low_ctr",
+      "roc_auc": 0.470688622754491,
+      "avg_precision": 0.25848361032410455,
+      "precision_at_50": 0.18,
+      "precision_at_100": 0.28
+    }
+  ],
+  "top_features": [
+    {
+      "feature": "num__avg_position_may",
+      "importance": 0.25217876619055346
+    },
+    {
+      "feature": "num__avg_position_apr",
+      "importance": 0.20335271311811814
+    },
+    {
+      "feature": "num__ctr_may",
+      "importance": 0.08176375637231106
+    },
+    {
+      "feature": "num__imp_change_apr_to_may",
+      "importance": 0.0637472659653785
+    },
+    {
+      "feature": "num__content_age_days",
+      "importance": 0.060399928628870274
+    },
+    {
+      "feature": "num__clicks_may",
+      "importance": 0.05896103419651121
+    },
+    {
+      "feature": "num__impressions_apr",
+      "importance": 0.04820173053803124
+    },
+    {
+      "feature": "num__days_since_update",
+      "importance": 0.040416113036653614
+    },
+    {
+      "feature": "num__word_count",
+      "importance": 0.03504421284379496
+    },
+    {
+      "feature": "num__char_count",
+      "importance": 0.02772919281111269
+    },
+    {
+      "feature": "num__days_with_impressions_may",
+      "importance": 0.025760710485233658
+    },
+    {
+      "feature": "num__ctr_apr",
+      "importance": 0.022056597938592735
+    },
+    {
+      "feature": "num__impressions_may",
+      "importance": 0.013710405690463764
+    },
+    {
+      "feature": "num__clicks_apr",
+      "importance": 0.01157875833982209
+    },
+    {
+      "feature": "num__category_count",
+      "importance": 0.008249645806419126
+    },
+    {
+      "feature": "num__competition",
+      "importance": 0.007453043268195124
+    },
+    {
+      "feature": "num__search_volume",
+      "importance": 0.0070583057401978535
+    },
+    {
+      "feature": "num__cpc",
+      "importance": 0.006221719995969124
+    },
+    {
+      "feature": "cat__competition_level_LOW",
+      "importance": 0.003772459166763982
+    },
+    {
+      "feature": "cat__competition_level_None",
+      "importance": 0.0036168719601934137
+    }
+  ],
+  "top20_preview": [
+    {
+      "rank": 1,
+      "content_hash_id": "content_e5119f5ccb21b8be",
+      "client_hash_id": "client_62f4a7e64f5e0096",
+      "final_action_score": 69.31,
+      "model_probability": 0.9901366074842841,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 256,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 80.734375,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 46.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 2,
+      "content_hash_id": "content_84332ce4be404e3f",
+      "client_hash_id": "client_62f4a7e64f5e0096",
+      "final_action_score": 69.27,
+      "model_probability": 0.9895071017700229,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 306,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 76.66993464052288,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 61.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 3,
+      "content_hash_id": "content_e02ca086a84cfd35",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.14,
+      "model_probability": 0.9876771349169768,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 228,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 81.0,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 12.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 4,
+      "content_hash_id": "content_ad0b68d1727295e3",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.11,
+      "model_probability": 0.9872987511042641,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 304,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 82.56907894736842,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 12.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 5,
+      "content_hash_id": "content_905103df18204769",
+      "client_hash_id": "client_62f4a7e64f5e0096",
+      "final_action_score": 69.1,
+      "model_probability": 0.987144574922988,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 263,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 75.04182509505704,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 67.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 6,
+      "content_hash_id": "content_dcdb257bd5040270",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.09,
+      "model_probability": 0.9870092573320997,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 241,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 84.51452282157676,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 35.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 7,
+      "content_hash_id": "content_305afb885f6a3b9c",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.08,
+      "model_probability": 0.9868727698877143,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 537,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 78.3705772811918,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 120.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 8,
+      "content_hash_id": "content_df405a5ed66aab92",
+      "client_hash_id": "client_62f4a7e64f5e0096",
+      "final_action_score": 69.07,
+      "model_probability": 0.9866455865636542,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 308,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 75.56493506493507,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 7.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 9,
+      "content_hash_id": "content_7faa8052b9d6529d",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.06,
+      "model_probability": 0.9866239880724507,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 375,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 84.6,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 19.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 10,
+      "content_hash_id": "content_80be8e495d9ac06a",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.04,
+      "model_probability": 0.9863358541369277,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 418,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 79.4401913875598,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 115.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 11,
+      "content_hash_id": "content_457e2d8bbb19a0d6",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.04,
+      "model_probability": 0.9862411300507773,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 293,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 78.10580204778157,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 29.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 12,
+      "content_hash_id": "content_b95a5ce5e43246fc",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.03,
+      "model_probability": 0.986109709333708,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 822,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 80.5352798053528,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 43.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 13,
+      "content_hash_id": "content_32fcb568ccbc7b1c",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.02,
+      "model_probability": 0.9860523412960462,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 1141,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 72.47151621384751,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 120.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 14,
+      "content_hash_id": "content_9d7d88746b7fa260",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.02,
+      "model_probability": 0.9860599633109286,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 795,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 75.5069182389937,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 165.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 15,
+      "content_hash_id": "content_fce5865be2db56b5",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.01,
+      "model_probability": 0.9858664400529197,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 1019,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 81.89205103042198,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 24.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 16,
+      "content_hash_id": "content_42e8b5bce01cbff8",
+      "client_hash_id": "client_ff644d8251367cbb",
+      "final_action_score": 69.0,
+      "model_probability": 0.9857717400025003,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 348,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 72.91379310344827,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 0.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 17,
+      "content_hash_id": "content_30a68efb5286308f",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 69.0,
+      "model_probability": 0.9857813434337521,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 307,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 75.59934853420195,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 52.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 18,
+      "content_hash_id": "content_b43fec3272bcf926",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 68.99,
+      "model_probability": 0.9856220934228637,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 667,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 90.06896551724138,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 112.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 19,
+      "content_hash_id": "content_d57cfc271563c691",
+      "client_hash_id": "client_62f4a7e64f5e0096",
+      "final_action_score": 68.99,
+      "model_probability": 0.9856425622268074,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 293,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 72.4334470989761,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 156.0,
+      "future_decline_label": 1
+    },
+    {
+      "rank": 20,
+      "content_hash_id": "content_5f773cc42ddd6d11",
+      "client_hash_id": "client_73cda7b4e4f265ea",
+      "final_action_score": 68.97,
+      "model_probability": 0.985278706725997,
+      "baseline_action_score": 0.0,
+      "action_label": "monitor_or_prune",
+      "reason_codes": "future_decline_risk;deep_zero_click_risk",
+      "impressions_may": 832,
+      "clicks_may": 0,
+      "ctr_may": 0.0,
+      "avg_position_may": 72.8389423076923,
+      "sessions_may": 0,
+      "engagement_rate_may": 0.0,
+      "impressions_jun": 60.0,
+      "future_decline_label": 1
+    }
+  ],
+  "outputs": {
+    "feature_table_csv": "work/outputs/capstone_feature_table.csv",
+    "ranked_recommendations_csv": "work/outputs/capstone_ranked_recommendations.csv",
+    "top20_csv": "work/outputs/capstone_top20_recommendations.csv",
+    "model_vs_baseline_chart": "work/figures/capstone_model_vs_baseline.png",
+    "feature_importance_chart": "work/figures/capstone_feature_importance.png",
+    "action_mix_chart": "work/figures/capstone_action_mix.png"
+  },
+  "leakage_exclusions": [
+    "June metrics are label/output only, not model features",
+    "trend_direction and trend_pct are not warehouse fields and are not used",
+    "IDs are used for grouping/splitting only",
+    "validation holds out whole clients"
+  ]
+}
